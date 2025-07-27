@@ -38,7 +38,7 @@ def login_button():
     """Display login button at the top right if user is not logged in"""
     if not is_admin():
         # Position the button using columns
-        cols = st.columns([4,1])
+        cols = st.columns([10,1])
         with cols[1]:
             if st.button("Admin Login", key="login_button"):
                 st.session_state.show_login_form = True

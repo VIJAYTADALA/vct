@@ -4,15 +4,17 @@ from database import Database
 from config import Config
 from auth import is_admin
 from database import get_db
+from searchDonations import show_search_criteria, get_filtered_donations
 
 def display_donations():
+    show_search_criteria()
     db= get_db()
     """Display donations with pagination"""
-    st.title("Donation Records")
+    st.write("Donation Records")
     
     # Pagination
     page = st.number_input("Page", min_value=1, value=1)
-    donations, total = db.get_donations(page)
+    donations, total = get_filtered_donations(page)
     total_pages = (total // Config.ITEMS_PER_PAGE) + 1
     
     if not donations:
